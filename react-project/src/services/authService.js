@@ -17,3 +17,14 @@ export  const login = async (email, password) => {
     return result;
     
     }
+export  const register = async (email, password) => {
+
+    const result = await request('POST',baseURL + '/register',{
+        email,
+        password,
+    
+       })
+    
+    return result;
+    
+    }
