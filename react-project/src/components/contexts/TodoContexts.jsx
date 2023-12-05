@@ -38,10 +38,19 @@ export const AuthProvider = ({
 
 }
 
+const logoutHandler = ()=> {
+    setAuth({})
+
+    localStorage.removeItem('accessToken')
+
+    navigate(Path.Home)
+}
+
 
     const values = {
         loginSubmithandler,
         registerSubmitHandler,
+        logoutHandler,
         username: auth.username || auth.email,
         email: auth.email,
         userId: auth._id,

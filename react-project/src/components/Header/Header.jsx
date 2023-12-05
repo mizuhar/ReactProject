@@ -5,7 +5,7 @@ import { TodoContext } from "../contexts/TodoContexts"
 
 export default function Header(){
 
-    const { isAuthenticated } = useContext(TodoContext)
+    const { isAuthenticated, username } = useContext(TodoContext)
 
     return(
         <>
@@ -17,9 +17,9 @@ export default function Header(){
     </Link>
   </h1>
   <nav >
-    <Link to={"/games"}>List of the greatest </Link>
+    <Link to={"/boxers"}>List of the greatest </Link>
     {isAuthenticated && (<div id="user" >
-      <Link to={"/games/create"}>Your suggestion</Link>
+      <Link to={"/boxers/create"}>Your suggestion</Link>
       <Link to={"/logout"}>Logout</Link>
       <span>| {username}</span>
     </div>)}

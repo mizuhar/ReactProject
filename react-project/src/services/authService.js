@@ -28,3 +28,8 @@ export  const register = async (email, password) => {
     return result;
     
     }
+
+export const logout = async () => {
+
+      await  request('GET',baseURL + '/logout')
+    }
