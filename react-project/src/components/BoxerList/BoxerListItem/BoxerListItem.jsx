@@ -1,10 +1,28 @@
-export default function BoxerListItem(){
+import { Link } from "react-router-dom";
+
+export default function BoxerListItem({
+    
+        _id,
+        title,
+        category,
+        imageUrl,
+    
+}){
 
 
 
     return(
         <>
-        <h1>Boxer List Item!</h1>
+               <div className="allGames">
+    <div className="allGames-info">
+      <img src={imageUrl} />
+      <h6>{category}</h6>
+      <h2>{title}</h2>
+      <Link to={`/boxers/${_id}`} className="details-button">
+        More Information
+      </Link>
+    </div>
+  </div>
         </>
     )
 }
