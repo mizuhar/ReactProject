@@ -26,7 +26,7 @@ export const AuthProvider = ({
     navigate(Path.Home)
 
 }
-const registerSubmitHandler = async (values)=>{
+    const registerSubmitHandler = async (values)=>{
 
     const result = await authService.register(values.email, values.password)
     
@@ -42,6 +42,10 @@ const registerSubmitHandler = async (values)=>{
     const values = {
         loginSubmithandler,
         registerSubmitHandler,
+        username: auth.username || auth.email,
+        email: auth.email,
+        userId: auth._id,
+        isAuthenticated: !! auth.accessToken,
     }
 
     return(

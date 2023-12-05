@@ -1,8 +1,11 @@
+import { useContext } from "react"
 import { Link } from "react-router-dom"
+import { TodoContext } from "../contexts/TodoContexts"
 
 
 export default function Header(){
 
+    const { isAuthenticated } = useContext(TodoContext)
 
     return(
         <>

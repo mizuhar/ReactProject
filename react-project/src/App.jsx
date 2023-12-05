@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import BoxerList from "./components/BoxerList/BoxerList";
 import { AuthProvider } from "./components/contexts/TodoContexts";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
@@ -17,11 +18,12 @@ function App() {
 
       {/* <Header></Header> */}
 
-      <Routes>
-        <Route path={Path.Home} element={<Home />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/register" element={<Register />}></Route>
-      </Routes>
+          <Routes>
+            <Route path={Path.Home} element={<Home />}></Route>
+            <Route path="/boxers" element={<BoxerList />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+            <Route path="/register" element={<Register />}></Route>
+          </Routes>
      </AuthProvider>    
      </>
   )
