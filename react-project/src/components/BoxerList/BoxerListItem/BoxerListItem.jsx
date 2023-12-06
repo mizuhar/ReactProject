@@ -9,7 +9,7 @@ export default function BoxerListItem({
     
 }){
 
-
+console.log(_id);
 
     return(
         <>

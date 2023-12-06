@@ -11,8 +11,21 @@ export const getAll = async ()=>{
   
       return result
   }
+
+export const getOne = async (boxerId)=>{
+    const result =  await request('GET', `${baseURL}/${boxerId}`)
+  
+      return result
+  }
   export const create = async (boxerData) =>{
     const result = await request('POST', baseURL, boxerData)
      
     return result
+}
+export const update = async (boxerId, boxerData) =>{
+
+    const result = await request('PUT', `${baseURL}/${boxerId}`, boxerData)
+
+    return result
+
 }
