@@ -1,6 +1,6 @@
 const Path = {
     Home: '/',
     Logout: '/logout',
-    //GameEdit: '/games/:gameId/edit',
+    BoxerUpdate: '/boxers/:boxerId/edit',
 }
 export default Path

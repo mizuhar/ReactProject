@@ -29,3 +29,9 @@ export const update = async (boxerId, boxerData) =>{
     return result
 
 }
+  export const remove = async (boxerId) =>{
+
+    const result = await request('DELETE', `${baseURL}/${boxerId}`)
+
+    return result
+}

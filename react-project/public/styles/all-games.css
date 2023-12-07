@@ -19,6 +19,7 @@
 }
 
 .allGames {
+    opacity: 0.75;
     background-color: rgb(206, 193, 193);
     border-radius: 30px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);

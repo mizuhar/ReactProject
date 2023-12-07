@@ -2,11 +2,13 @@ import { useContext, useEffect, useReducer } from "react"
 import { useState } from "react"
 import * as boxerService from "../../services/boxerService"
 import * as commentService from "../../services/commentService"
-import { Link,useNavigate, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import  reducer  from "./commentReducer"
 import { TodoContext } from "../contexts/TodoContexts"
 import { useMemo } from "react"
+
 import useForm from "../../hooks/useForm"
+import { Button } from "react-bootstrap";
 
 export default function BoxerDetails(){
 
@@ -49,7 +51,15 @@ const addCommentHandler = async (values) => {
         payload: newComment
      })
 }
-const deleteClickHandler = () =>{
+const deleteClickHandler = async () =>{
+
+    const hasConfirm = confirm('Are you sure you want to remove this boxer?')
+
+    if(hasConfirm){
+       await boxerService.remove(boxerId)
+
+       navigate('/boxers')
+    }
     
 }
 
@@ -83,11 +93,11 @@ const { values, onChange, onSubmit } = useForm(addCommentHandler, initialValue)
             {comment.length === 0 && (<p className="no-comment">No comments.</p>)}
             
             </div>
-            {/* {userId === boxer._ownerId && (<div className="buttons">
-            <Link to={`/games/${gameId}/edit`} className="button">Edit</Link>
-            <Button className="button" onClick={deleteButtonClickHandler}>Delete</Button>
+            {userId === boxer._ownerId && (<div className="buttons">
+            <Link to={`/boxers/${boxerId}/edit`} className="button">Update</Link>
+            <Button className="button" onClick={deleteClickHandler}>Delete</Button>
             </div>
-        )} */}
+        )}
          <article className="create-comment">
     <label>Add new comment:</label>
     <form className="form" onSubmit={onSubmit}>

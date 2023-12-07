@@ -28,7 +28,7 @@ function App() {
             <Route path="/boxers" element={<BoxerList />}></Route>
             <Route path="/boxers/:boxerId" element={<BoxerDetails />}></Route>
             <Route path="/boxers/create" element={<CreateBoxer />}></Route>
-            <Route path="boxers/update" element={<BoxerUpdate/>}></Route>
+            <Route path={Path.BoxerUpdate} element={<BoxerUpdate/>}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/register" element={<Register />}></Route>
             <Route path={Path.Logout} element={<Logout />}></Route>
