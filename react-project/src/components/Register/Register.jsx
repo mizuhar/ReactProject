@@ -68,7 +68,7 @@ const RegisterFormKeys = {
         value={values[RegisterFormKeys.ConfirmPassword]}
         />
          {errorMessage && (<p style={{color:"red", fontSize:"17px"}}>{errorMessage}</p>)}
-      <input className="btn submit" type="submit" defaultValue="Register" />
+      <input className="btn submit" type="submit" defaultValue="Register" disabled={Object.values(errorMessage).some(x=>x)}/>
       <p className="field">
         <span>
           If you already have profile click <a href="/login">here</a>
