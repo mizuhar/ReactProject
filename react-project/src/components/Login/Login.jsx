@@ -3,6 +3,7 @@ import { useContext } from "react"
 import { TodoContext } from "../contexts/TodoContexts"
 
 import useForm from "../../hooks/useForm"
+import { useState } from "react"
 
 
 
@@ -12,6 +13,7 @@ const LoginFormKeys = {
   }
 
 export default  function Login(){
+    const [ errorMessage, setErrorMessage] = useState('')
 
 const { loginSubmithandler } = useContext(TodoContext)
 
@@ -19,7 +21,15 @@ const { values, onChange, onSubmit } = useForm(loginSubmithandler,{
  [LoginFormKeys.Email]: '',
  [LoginFormKeys.Password]: '',
 })
-
+const validatePasswordHandler = ()=>{
+    if(values[LoginFormKeys.Password].length < 5){
+        setErrorMessage('Password must be at least 5 characters!');
+    }
+    
+    else {
+       setErrorMessage('');
+    }
+}
 
     return(
         <>
@@ -44,8 +54,10 @@ const { values, onChange, onSubmit } = useForm(loginSubmithandler,{
         id="login-password"
         name={LoginFormKeys.Password} 
         onChange={onChange}
+        onBlur={validatePasswordHandler}
         value={values[LoginFormKeys.Password]}
         />
+        {errorMessage && <p style={{color:"red", fontSize: "17px"}}>{errorMessage}</p>}
       <input 
         type="submit" 
         className="btn submit"

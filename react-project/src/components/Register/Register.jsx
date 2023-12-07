@@ -2,6 +2,7 @@ import { useContext } from "react"
 import { TodoContext } from "../contexts/TodoContexts"
 
 import useForm from "../../hooks/useForm"
+import { useState } from "react"
 
 
 const RegisterFormKeys = {
@@ -10,7 +11,7 @@ const RegisterFormKeys = {
     ConfirmPassword: "confirm-password",
   }
   export default function Register(){
-
+    const [errorMessage,setErrorMessage] = useState('')
     const { registerSubmitHandler } = useContext(TodoContext)
 
     const { values, onChange, onSubmit } = useForm(registerSubmitHandler,{
@@ -19,7 +20,19 @@ const RegisterFormKeys = {
         [RegisterFormKeys.ConfirmPassword]: '',
 
     })
+    const validatePasswordHandler = ()=>{
+        if(values[RegisterFormKeys.Password].length < 5){
+            setErrorMessage('Password must be at least 5 characters!');
+        }
+        else if(values[RegisterFormKeys.ConfirmPassword] !== values[RegisterFormKeys.Password]){
+            setErrorMessage('Confirm Password ana Password must be the same!');
+        }
 
+        else {
+           setErrorMessage('');
+        }
+    }
+   
 
     return(
         <>
@@ -42,15 +55,19 @@ const RegisterFormKeys = {
       name={RegisterFormKeys.Password} 
       id="register-password"
       onChange={onChange}
+      onBlur={validatePasswordHandler}
       value={values[RegisterFormKeys.Password]}
        />
+       {errorMessage && (<p style={{color:"red", fontSize:"17px"}}>{errorMessage}</p>)}
       <label htmlFor="con-pass">Confirm Password:</label>
       <input type="password"
        name="confirm-password"
         id="confirm-password" 
         onChange={onChange}
+        onBlur={validatePasswordHandler}
         value={values[RegisterFormKeys.ConfirmPassword]}
         />
+         {errorMessage && (<p style={{color:"red", fontSize:"17px"}}>{errorMessage}</p>)}
       <input className="btn submit" type="submit" defaultValue="Register" />
       <p className="field">
         <span>

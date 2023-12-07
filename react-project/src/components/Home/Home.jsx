@@ -6,13 +6,13 @@ import ListOfBoxers from "./ListOfBoxers/ListOfBoxers"
 
 export default function Home(){
 
-    const [boxer, setBoxer] = useState([])
+    const [ boxer, setBoxer ] = useState([])
 
     useEffect(()=>{
-    boxerService.getAll()
-    .then(result =>
-        setBoxer(result)
-    )},[])
+       boxerService.getAll()
+        .then(result =>
+           setBoxer(result)
+           )},[])
 
     return(
         <>
@@ -25,8 +25,10 @@ export default function Home(){
             <img style={{marginTop:'2em', opacity: 0.45}} src="https://www.sportco.io/images/post/vs_1629179581.jpg" alt="all-time" />
     </section>
 
-    {boxer.map(x => <ListOfBoxers {...x}></ListOfBoxers>) }
+    {boxer.map(box => <ListOfBoxers {...box}></ListOfBoxers>) }
+
+    {!boxer.length === 0 && ( <p className="no-articles">No suggestion yet</p>)}
         </>
-        
+         
     )
 }
