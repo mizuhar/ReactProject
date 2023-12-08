@@ -72,10 +72,10 @@ const { values, onChange, onSubmit } = useForm(addCommentHandler, initialValue)
 
     return(
         <>
-      <section id="game-details">  
+      <section id="boxer-details">  
             <div className="info-section">
-            <div className="game-header">
-            <img className="game-img" src={boxer.imageUrl} alt={boxer.title} />
+            <div className="boxer-header">
+            <img className="boxer-img" src={boxer.imageUrl} alt={boxer.title} />
             <h1>{boxer.title}</h1>
             <span className="levels">Number of world titles: {boxer.maxLevel}</span>
             <p className="type">{boxer.category}</p>

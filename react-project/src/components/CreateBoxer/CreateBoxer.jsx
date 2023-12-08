@@ -49,7 +49,7 @@ export default function CreateBoxer(){
         min={1}
         placeholder={1}
       />
-      <label htmlFor="game-img">Image:</label>
+      <label htmlFor="boxer-img">Image:</label>
       <input
         type="text"
         id="imageUrl"

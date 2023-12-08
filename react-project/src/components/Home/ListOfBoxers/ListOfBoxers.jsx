@@ -9,7 +9,7 @@ export default function ListOfBoxers({
 
     return (
         <>
-        <div className="game">
+        <div className="boxer">
       <div className="image-wrap">
         <img src={imageUrl} />
       </div>
