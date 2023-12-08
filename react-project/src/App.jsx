@@ -4,6 +4,7 @@ import BoxerList from "./components/BoxerList/BoxerList";
 import BoxerUpdate from "./components/BoxerUpdate/BoxerUpdate";
 import { AuthProvider } from "./components/contexts/TodoContexts";
 import CreateBoxer from "./components/CreateBoxer/CreateBoxer";
+import RoutGuard from "./components/guard/RoutGuard";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
@@ -25,13 +26,17 @@ function App() {
 
           <Routes>
             <Route path={Path.Home} element={<Home />}></Route>
-            <Route path="/boxers" element={<BoxerList />}></Route>
-            <Route path="/boxers/:boxerId" element={<BoxerDetails />}></Route>
-            <Route path="/boxers/create" element={<CreateBoxer />}></Route>
+            <Route path={Path.BoxerList} element={<BoxerList />}></Route>
+            <Route path={Path.BoxerDetails} element={<BoxerDetails />}></Route>
             <Route path={Path.BoxerUpdate} element={<BoxerUpdate/>}></Route>
-            <Route path="/login" element={<Login />}></Route>
-            <Route path="/register" element={<Register />}></Route>
+            <Route path={Path.Login} element={<Login />}></Route>
+            <Route path={Path.Register} element={<Register />}></Route>
             <Route path={Path.Logout} element={<Logout />}></Route>
+              <Route element={<RoutGuard />}>
+                    
+                    <Route path={Path.CreateBoxer} element={<CreateBoxer />}></Route>
+                  
+                </Route>
           </Routes>
      </AuthProvider>    
      </>
